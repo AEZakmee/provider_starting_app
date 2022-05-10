@@ -9,15 +9,15 @@ enum supportedLocales {
 }
 
 class LocalizationProvider extends ChangeNotifier {
-  final localizationService = locator<LocalizationService>();
+  final themeService = locator<LocalizationService>();
 
   Future<void> setLanguage(String data) async {
-    localizationService.languageCode = data;
-    await localizationService.savePreferredLocale(data);
+    themeService.languageCode = data;
+    await themeService.setLocale(data);
     notifyListeners();
   }
 
-  Locale getLocale() => Locale(localizationService.languageCode);
+  Locale getLocale() => Locale(themeService.languageCode);
 
   List<Locale> getSupportedLocales() => List.generate(
         supportedLocales.values.length,

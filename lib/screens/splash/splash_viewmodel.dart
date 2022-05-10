@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import '../../app/router.dart';
 
 class SplashViewModel extends ChangeNotifier {
-  final BuildContext _context;
-  SplashViewModel(this._context);
+  SplashViewModel();
 
-  Future<void> init() async {
+  Future<void> init(BuildContext context) async {
     if (await userIsLogged()) {
-      await goToMainScreen();
+      await goToMainScreen(context);
     }
   }
 
@@ -19,7 +18,7 @@ class SplashViewModel extends ChangeNotifier {
     return true;
   }
 
-  Future<void> goToMainScreen() async {
-    await Navigator.of(_context).popAndPushNamed(Routes.main);
+  Future<void> goToMainScreen(BuildContext context) async {
+    await Navigator.of(context).popAndPushNamed(Routes.primary);
   }
 }

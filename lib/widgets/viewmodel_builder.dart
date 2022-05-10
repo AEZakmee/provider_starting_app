@@ -14,7 +14,7 @@ class ViewModelBuilder<T extends ChangeNotifier> extends StatefulWidget {
 
   final Function(T model)? onModelReady;
 
-  final T Function(BuildContext context) viewModelBuilder;
+  final T Function() viewModelBuilder;
 
   final Function(T model)? onDispose;
 
@@ -29,7 +29,7 @@ class _ViewModelBuilderState<T extends ChangeNotifier>
   @override
   void initState() {
     super.initState();
-    _viewModel = widget.viewModelBuilder(context);
+    _viewModel = widget.viewModelBuilder();
     if (widget.onModelReady != null && _viewModel != null) {
       widget.onModelReady!(_viewModel!);
     }
