@@ -24,12 +24,21 @@ class Body extends StatelessWidget {
           ScaffoldPage(
             content: Text('Kur3'),
           ),
+          ScaffoldPage(
+            content: Text('Settings'),
+          ),
         ],
       ),
       pane: NavigationPane(
         selected: viewModel.index,
         onChanged: (i) => context.read<PrimaryViewModel>().updateIndex(i),
         displayMode: PaneDisplayMode.compact,
+        footerItems: [
+          PaneItem(
+            icon: const Icon(FluentIcons.settings),
+            title: const Text('Settings'),
+          ),
+        ],
         items: [
           PaneItem(
             icon: const Icon(FluentIcons.more),
