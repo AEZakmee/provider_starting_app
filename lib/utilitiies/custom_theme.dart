@@ -6,8 +6,6 @@ import '../providers/theme_provider.dart';
 class CustomTheme {
   BuildContext context;
 
-  CustomTheme(this.context);
-
   CustomTheme.of(this.context);
 
   ThemeData get theme {
