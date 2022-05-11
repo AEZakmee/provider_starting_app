@@ -2,9 +2,9 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:system_theme/system_theme.dart';
 
 import '../providers/localization_provider.dart';
+import '../providers/theme_provider.dart';
 import 'router.dart';
 
 enum supportedLocales { en, bg }
@@ -14,8 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeProvider = context.watch<LocalizationProvider>();
+    final themeProvider = context.watch<ThemeProvider>();
     return Container(
-      color: SystemTheme.isDarkMode ? Colors.black : Colors.white,
+      color: themeProvider.isDarkTheme
+          ? ThemeData.dark().micaBackgroundColor
+          : ThemeData.light().micaBackgroundColor,
       child: FluentApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
@@ -25,7 +28,9 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         locale: localeProvider.getLocale(),
-        theme: _theme,
+        theme: themeProvider.lightTheme(),
+        darkTheme: themeProvider.darkTheme(),
+        themeMode: themeProvider.themeMode,
         supportedLocales: supportedLocales.values.map((e) => Locale(e.name)),
         initialRoute: Routes.splash,
         onGenerateRoute: AppRouter.generateRoute,
@@ -33,8 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-ThemeData get _theme => ThemeData(
-      brightness: SystemTheme.isDarkMode ? Brightness.dark : Brightness.light,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-    );

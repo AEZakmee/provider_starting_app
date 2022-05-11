@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../../../utilitiies/custom_theme.dart';
 import '../main_viewmodel.dart';
 
 class Body extends StatelessWidget {
@@ -14,7 +15,7 @@ class Body extends StatelessWidget {
     return NavigationView(
       content: NavigationBody(
         index: viewModel.index,
-        children: const [
+        children: [
           ScaffoldPage(
             content: Text('Kur1'),
           ),
@@ -25,7 +26,10 @@ class Body extends StatelessWidget {
             content: Text('Kur3'),
           ),
           ScaffoldPage(
-            content: Text('Settings'),
+            content: Text(
+              'Settings',
+              style: CustomTheme.of(context).theme.typography.title,
+            ),
           ),
         ],
       ),

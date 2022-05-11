@@ -15,12 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.4
   intl: ^0.17.0
   provider: any
-  flex_color_scheme: any
   shared_preferences: ^2.0.13
   devicelocale: ^0.5.1
   get_it: ^7.2.0
   fluent_ui: any
-  system_theme: ^2.0.0
 
 dev_dependencies:
   flutter_test:
