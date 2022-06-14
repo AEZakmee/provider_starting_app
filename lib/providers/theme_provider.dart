@@ -24,13 +24,11 @@ class ThemeProvider extends ChangeNotifier {
 
   ThemeData lightTheme() => ThemeData(
         brightness: Brightness.light,
-        accentColor: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       );
 
   ThemeData darkTheme() => ThemeData(
         brightness: Brightness.dark,
-        accentColor: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       );
 

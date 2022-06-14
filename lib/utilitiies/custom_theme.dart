@@ -8,7 +8,7 @@ class CustomTheme {
 
   CustomTheme.of(this.context);
 
-  ThemeData get theme {
+  ThemeData get appTheme {
     final theme = context.read<ThemeProvider>();
     return theme.isDarkTheme ? theme.darkTheme() : theme.lightTheme();
   }

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
+import '../utilitiies/custom_theme.dart';
 import 'router.dart';
 
 enum supportedLocales { en, bg }
@@ -16,9 +17,7 @@ class MyApp extends StatelessWidget {
     final localeProvider = context.watch<LocalizationProvider>();
     final themeProvider = context.watch<ThemeProvider>();
     return Container(
-      color: themeProvider.isDarkTheme
-          ? ThemeData.dark().micaBackgroundColor
-          : ThemeData.light().micaBackgroundColor,
+      color: CustomTheme.of(context).appTheme.micaBackgroundColor,
       child: FluentApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [

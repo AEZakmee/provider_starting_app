@@ -1,9 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utilitiies/custom_theme.dart';
 import '../main_viewmodel.dart';
+import 'sites_page/sites_page.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -16,9 +18,7 @@ class Body extends StatelessWidget {
       content: NavigationBody(
         index: viewModel.index,
         children: [
-          ScaffoldPage(
-            content: Text('Kur1'),
-          ),
+          const SitesPage(),
           ScaffoldPage(
             content: Text('Kur2'),
           ),
@@ -28,7 +28,7 @@ class Body extends StatelessWidget {
           ScaffoldPage(
             content: Text(
               'Settings',
-              style: CustomTheme.of(context).theme.typography.title,
+              style: CustomTheme.of(context).appTheme.typography.title,
             ),
           ),
         ],
@@ -45,8 +45,8 @@ class Body extends StatelessWidget {
         ],
         items: [
           PaneItem(
-            icon: const Icon(FluentIcons.more),
-            title: const Text('Kur1'),
+            icon: const Icon(FluentIcons.site_scan),
+            title: const Text('Sites'),
           ),
           PaneItem(
             icon: const Icon(FluentIcons.user_clapper),
